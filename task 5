@@ -1,0 +1,40 @@
+accidents = [
+    {"weather": "Clear", "road": "Dry", "time": "Morning"},
+    {"weather": "Rain", "road": "Wet", "time": "Evening"},
+    {"weather": "Snow", "road": "Snowy", "time": "Night"},
+    {"weather": "Clear", "road": "Dry", "time": "Morning"},
+    {"weather": "Rain", "road": "Wet", "time": "Night"},
+    {"weather": "Fog", "road": "Wet", "time": "Evening"},
+    {"weather": "Clear", "road": "Dry", "time": "Evening"},
+    {"weather": "Snow", "road": "Snowy", "time": "Morning"},
+    {"weather": "Rain", "road": "Wet", "time": "Evening"},
+    {"weather": "Clear", "road": "Dry", "time": "Night"},
+]
+
+weather_count = {}
+road_count = {}
+time_count = {}
+
+for accident in accidents:
+    weather = accident["weather"]
+    road = accident["road"]
+    time = accident["time"]
+    
+    weather_count[weather] = weather_count.get(weather, 0) + 1
+    road_count[road] = road_count.get(road, 0) + 1
+    time_count[time] = time_count.get(time, 0) + 1
+
+def draw_bar(label, count):
+    return f"{label:<10} {'█' * count} {count}"
+
+print("\nAccident Patterns by Weather:\n")
+for weather in weather_count:
+    print(draw_bar(weather, weather_count[weather]))
+
+print("\nAccident Patterns by Road Condition:\n")
+for road in road_count:
+    print(draw_bar(road, road_count[road]))
+
+print("\nAccident Patterns by Time of Day:\n")
+for time in time_count:
+    print(draw_bar(time, time_count[time]))
